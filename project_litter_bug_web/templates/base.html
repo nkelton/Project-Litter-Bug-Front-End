@@ -1,0 +1,93 @@
+{% load staticfiles %}
+<html>
+<head>
+    <!--Jquery-->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <!-- Bootstrap Date-Picker Plugin -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.css"/>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js"></script>
+
+    <!-- Local scripts and css -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
+
+    <script type="text/javascript">var results = "{% url 'results' %}";</script>
+    <script type="text/javascript" src="{% static 'js/base/base.js' %}"></script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+    <title>Project Litter Bug</title>
+</head>
+<body>
+    {% if messages %}
+        <div id="modal-container">
+            <ul class="messages">
+                {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+            <span id="modal-close" onclick='this.parentNode.parentNode.removeChild(this.parentNode); return false;' aria-hidden="true">&times;</span>
+        </div>
+    {% endif %}
+
+
+    <div class="container">
+        <div class="jumbotron">
+            <h1>Project Litter Bug</h1>
+            <p>Generating Random Content for Environmental Awareness</p>
+        </div>
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+            <!-- Collapse button -->
+            <button id="menu-btn" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar"
+                aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation"><span class="text-success">Menu<i
+                class="fas fa-bars fa-1x"></i></span></button>
+
+            <div class="collapse navbar-collapse" id="navbar">
+
+                <ul class="navbar-nav mr-auto">
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/about/">About</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/how-it-works/">How It Works</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/calculation/">Calculation</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/contact/">Contact</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/donate/">Donate</a>
+                    </li>
+
+                </ul>
+
+                <form id="litter-date-search" class="form-inline my-2 my-lg-0">
+                    <div id="datepick-container" class="input-group date">
+                        <input id="cal" name="date" type="text" placeholder="Litter by Date..." class="form-control" autocomplete="off"><span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                    </div>
+                     <button id="litter-date-search-btn" class="btn btn-outline-success my-2 my-sm-0" type="button">Search</button>
+                </form>
+
+            </div>
+        </nav>
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>

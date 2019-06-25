@@ -1,0 +1,85 @@
+{% extends 'templates/base.html' %}
+{% block content %}
+{% load static %}
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/article.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/calculation.css' %}">
+    <meta charset="UTF-8">
+    <title>Calculation</title>
+</head>
+<body>
+    <h1 class="mt-">Calculation</h1>
+    <hr class="mt-0 mb-4">
+
+    <article id="article-wrapper">
+
+        <h2 id="segment-header">Gigabytes Generated</h2>
+
+        <p id="paragraph-wrapper">
+            As Project Litter Bug randomly generates useless content and uploads it to YouTube, one of the things it does is keeps track of the byte size of each file it uploads.
+            The size of every piece of content is then summed together and converted from bytes to gigabytes, which is where the “Gigabytes Generated” value comes from on the home page.
+        </p>
+
+        <p id="paragraph-wrapper">
+            = (Bytes) * 10<sup>9</sup>
+        </p>
+
+        <h2 id="segment-header">Energy Used</h2>
+
+        <p id="paragraph-wrapper">
+            In order to perform this calculation, we must take the size of each piece of content and
+            multiply it by the number of hours since it was uploaded. The resulting value constitutes the "total weight"
+            of that video. This value is then once again converted into gigabytes and the aggregate of all videos is summed. Finally, the summed value is multiplied by the constant <b>5.12 kWh per GB</b>.
+            This constant is the average amount of power the Internet uses to support the utilization of every GB of data.
+            It is taken from a study by the ACEEE, <a href="https://aceee.org/files/proceedings/2012/data/papers/0193-000409.pdf">The Megawatts behind Your Megabytes: Going from Data-Center to Desktop</a>.
+        </p>
+
+        <p id="paragraph-wrapper">
+            = ((Content Byte Size * Time Since Upload) * 10<sup>9</sup>) * 5.12
+        </p>
+
+        <h2 id="segment-header">Total Cost</h2>
+
+        <p id="paragraph-wrapper">
+            Likewise, the cost is derived using another constant from the aforementioned study.
+            It assumes an average electricity cost of $0.10 per kWh which equates to a system energy cost of <b>$0.51 per GB</b>.
+            This constant is again multiplied by the number of gigabytes the script has generated overtime, and results in the value displayed on the homepage.
+        </p>
+
+        <p id="paragraph-wrapper">
+            = (Gigabytes) * 0.51
+        </p>
+
+        <h2 id="segment-header">Total CO<sup>2</sup> Emissions</h2>
+
+        <p id="paragraph-wrapper">
+            This value is calculated by multiplying the "Energy Used" value by the Emissions Factor defined for
+            the <a href="https://www.epa.gov/energy/greenhouse-gases-equivalencies-calculator-calculations-and-references">EPA's greenhouse gas calculator</a>.
+            The resulting unit is CO<sup>2</sup> by Metric Tons.
+        </p>
+
+        <p id="paragraph-wrapper">
+            <b>Emissions Factor</b> = 1,559 lbs CO<sub>2</sub>/MWh × (4.536 × 10<sup>-4</sup> metric tons/lb) × 0.001 MWh/kWh = 7.07 × 10<sup>-4</sup> metric tons CO<sub>2</sub>/kWh
+            <br>
+            <br>
+            = Energy Used * 7.07 × 10<sup>-4</sup>
+        </p>
+
+        <h2 id="segment-header">Notes</h2>
+
+        <ul id="notes-ul">
+            <li id="notes-li">
+                Barring the number of gigabytes generated, the values displayed on the homepage should be looked at as raw estimations and subject to error.
+                The point of these values are not to be scientifically accurate but to help convey the idea that the data a user uploads (or accesses) on the Internet has a calculable impact on the world’s resources.
+            </li>
+            <li id="notes-li">
+                 This calculation does not take into account the amount of energy required to generate the random content, stream the videos on YouTube, or run the server this website is hosted on.
+            </li>
+        </ul>
+
+    </article>
+
+</body>
+</html>
+{% endblock %}

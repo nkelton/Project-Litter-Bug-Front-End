@@ -1,0 +1,29 @@
+#article-wrapper {
+    width: 100%;
+    text-align: center;
+}
+
+#segment-header, #sm-segment-header {
+    text-align: left;
+    margin-bottom: 2%;
+}
+
+segment-header {
+    background-color: #f8f9fa;
+}
+
+#sm-segment-header {
+    padding: 1%;
+    background-color: #e9ecef;
+    margin-left: 5%;
+}
+
+#paragraph-wrapper {
+   background-color: #f8f9fa;
+   text-align: left;
+   padding: 3%;
+}
+
+a {
+    color: #28a745;
+}

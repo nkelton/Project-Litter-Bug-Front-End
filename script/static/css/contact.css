@@ -1,0 +1,53 @@
+label {
+    float: left;
+}
+
+#email-form {
+    background-color: #e9ecef;
+    padding: 4%;
+}
+
+#modal-container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+#modal-close {
+    position:absolute;
+    top:0;
+    right:0;
+    margin-right: 1%;
+    cursor: pointer;
+}
+
+.messages {
+    list-style-type: none;
+    margin: 0 auto;
+    padding-right: 3%;
+}
+
+#form-button {
+    margin-top: 8%;
+}
+
+@media screen and (max-width: 800px) {
+
+    html, body {
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+
+    #form-container {
+        width: 110%;
+    }
+
+    #email-form {
+        margin-left: -30%;
+        width: 160%;
+    }
+
+    #form-button {
+        margin-top: 10%;
+    }
+}

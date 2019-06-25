@@ -1,0 +1,65 @@
+{% extends 'templates/base.html' %}
+{% block content %}
+{% load static %}
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/results.css' %}">
+    <script>var divHeight = parseInt("{{litter_info|length}}") * 400;</script>
+    <script type="text/javascript" src="{% static 'js/results/results.js' %}"></script>
+    <meta charset="UTF-8">
+    <title>Project Litter Bug</title>
+</head>
+<body>
+    <h1 class="mt-">Generated on {{ month }}/{{ day }}/{{ year }}</h1>
+    <hr class="mt-0 mb-4">
+
+    <div id="results-container">
+        {% for litter in litter_info %}
+        <div id="litter-container">
+            <div id="space"></div>
+
+            <div id="litter-results-background">
+                <div id="video-container">
+                    <iframe id="video-frame" frameborder="0" src="{{litter.url}}" allowfullscreen></iframe>
+                </div>
+
+                <div id="video-data-container">
+                    <ul class="list-group">
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Title
+                            <span id="litter-byte-num" class="badge badge-primary badge-pill">{{litter.title}}</span>
+                        </li>
+
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Total Bytes
+                            <span id="litter-generated-num" class="badge badge-primary badge-pill">{{litter.weight}}</span>
+                        </li>
+
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Total Energy Wasted (kHw)
+                            <span id="litter-energy-waste" class="badge badge-primary badge-pill">{{litter.energy_waste}}</span>
+                        </li>
+
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Total CO2 Emissions (MT)
+                            <span id="litter-emissions" class="badge badge-primary badge-pill">{{litter.emissions}}</span>
+                        </li>
+
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Total Cost ($)
+                            <span id="litter-total-cost"
+                                  class="badge badge-primary badge-pill">{{litter.life_cost}}</span>
+                        </li>
+
+                    </ul>
+                </div>
+
+            </div>
+
+        </div>
+        {% endfor %}
+    </div>
+
+</body>
+</html>
+{% endblock %}
